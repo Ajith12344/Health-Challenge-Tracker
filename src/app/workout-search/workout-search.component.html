@@ -1,0 +1,8 @@
+<div class="search-container">
+    <input type="text" placeholder="Search by Username" [(ngModel)]="searchTerm" (input)="onSearch()">
+    <select [(ngModel)]="filterType" (change)="onFilter()">
+      <option value="">All Types</option>
+      <option *ngFor="let type of workoutTypes" [value]="type">{{ type }}</option>
+    </select>
+  </div>
+  

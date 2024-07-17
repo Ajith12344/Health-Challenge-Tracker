@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { WorkoutService } from './workout.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'health';
+export class AppComponent implements OnInit {
+  workouts: any[] = [];
+
+  constructor(private workoutService: WorkoutService) {}
+
+  ngOnInit() {
+    this.updateWorkouts();
+  }
+
+  updateWorkouts(searchResults: any[] = this.workoutService.getWorkouts()) {
+    this.workouts = searchResults;
+  }
 }

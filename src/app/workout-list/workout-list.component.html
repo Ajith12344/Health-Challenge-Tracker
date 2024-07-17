@@ -1,0 +1,36 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Workout Type</th>
+      <th>Workout Minutes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let workout of workouts">
+      <td>{{ workout.username }}</td>
+      <td>{{ workout.workoutType }}</td>
+      <td>{{ workout.workoutMinutes }}</td>
+    </tr>
+  </tbody>
+</table>
+<p-table [value]="workouts" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="username">User Name <p-sortIcon field="username"></p-sortIcon></th>
+      <th pSortableColumn="workoutType">Workout Type <p-sortIcon field="workoutType"></p-sortIcon></th>
+      <th pSortableColumn="workoutMinutes">Workout Minutes <p-sortIcon field="workoutMinutes"></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-workout>
+    <tr>
+      <td>{{workout.username}}</td>
+      <td>{{workout.workoutType}}</td>
+      <td>{{workout.workoutMinutes}}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="paginatorleft" let-value let-totalRecords="totalRecords">
+    <span class="p-mx-3">Showing {{value}} of {{totalRecords}}</span>
+  </ng-template>
+</p-table>
+

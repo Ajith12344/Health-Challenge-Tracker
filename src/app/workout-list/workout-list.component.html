@@ -1,15 +1,15 @@
 <div class="container mx-auto p-4">
   <div class="overflow-x-auto">
-    <table class="min-w-full bg-white">
+    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
       <thead>
-        <tr>
-          <th class="py-2 px-4 border-b">User Name</th>
-          <th class="py-2 px-4 border-b">Workout Type</th>
-          <th class="py-2 px-4 border-b">Workout Minutes</th>
+        <tr class="bg-gray-100">
+          <th class="py-2 px-4 border-b text-left text-gray-700">User Name</th>
+          <th class="py-2 px-4 border-b text-left text-gray-700">Workout Type</th>
+          <th class="py-2 px-4 border-b text-left text-gray-700">Workout Minutes</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let workout of paginatedWorkouts" class="hover:bg-gray-100">
+        <tr *ngFor="let workout of paginatedWorkouts" class="hover:bg-gray-50">
           <td class="py-2 px-4 border-b">{{ workout.username }}</td>
           <td class="py-2 px-4 border-b">{{ workout.workoutType }}</td>
           <td class="py-2 px-4 border-b">{{ workout.workoutMinutes }}</td>

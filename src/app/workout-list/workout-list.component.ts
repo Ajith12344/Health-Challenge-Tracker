@@ -77,4 +77,5 @@ export class WorkoutListComponent implements OnChanges {
     this.pageSize = event.pageSize;
     this.updatePaginatedWorkouts();
   }
+  
 }

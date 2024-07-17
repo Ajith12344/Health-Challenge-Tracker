@@ -1,7 +1,7 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-interface Workout {
+export interface Workout {
   username: string;
   workoutType: string;
   workoutMinutes: number;

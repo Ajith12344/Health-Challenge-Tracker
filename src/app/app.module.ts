@@ -8,6 +8,8 @@ import { WorkoutListComponent } from './workout-list/workout-list.component';
 import { WorkoutSearchComponent } from './workout-search/workout-search.component';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +22,12 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

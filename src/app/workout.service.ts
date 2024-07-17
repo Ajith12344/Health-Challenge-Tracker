@@ -28,11 +28,11 @@ export class WorkoutService {
     }
   }
 
-  getWorkouts() {
+  getWorkouts(): Workout[] {
     return this.workouts;
   }
 
-  addWorkout(workout: Workout) {
+  addWorkout(workout: Workout): void {
     this.workouts.push(workout);
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('workouts', JSON.stringify(this.workouts));

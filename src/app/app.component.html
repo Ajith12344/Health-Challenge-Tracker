@@ -1,4 +1,24 @@
+<header class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold"> Health-Challenge-Tracker</div>
+        <nav>
+          <ul class="flex space-x-4">
+            <li><a href="#" class="text-white hover:text-gray-300">Home</a></li>
+            <li><a href="#" class="text-white hover:text-gray-300">app-workout-list</a></li>
+            <li><a href="#" class="text-white hover:text-gray-300">Chart</a></li>
+           
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 <app-workout-form (newWorkout)="updateWorkouts()"></app-workout-form>
 <app-workout-search (searchResults)="updateWorkouts($event)"></app-workout-search>
 <app-workout-list [workouts]="workouts"></app-workout-list>
-
+<app-workout-chart ngSkipHydration></app-workout-chart>
+<footer class="bg-gray-800 text-white py-4 mt-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2024 Ajith-Health-Challenge-Tracker. All rights reserved.</p>
+    </div>
+  </footer>

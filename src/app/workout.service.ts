@@ -14,10 +14,16 @@ export class WorkoutService {
   private workouts: Workout[] = [];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    const initialData = [
+    const initialData: Workout[] = [
       { username: 'John Doe', workoutType: 'Running', workoutMinutes: 30 },
       { username: 'Jane Smith', workoutType: 'Cycling', workoutMinutes: 45 },
-      { username: 'Alex Johnson', workoutType: 'Swimming', workoutMinutes: 60 }
+      { username: 'Alex Johnson', workoutType: 'Swimming', workoutMinutes: 60 },
+      { username: 'Ajith18', workoutType: 'Running', workoutMinutes: 20 },
+      { username: 'Ajith12344', workoutType: 'Cycling', workoutMinutes: 25 },
+      { username: 'Ram', workoutType: 'Swimming', workoutMinutes: 40 },
+      { username: 'Ajith18', workoutType: 'Running', workoutMinutes: 30 },
+      { username: 'John Doe', workoutType: 'Cycling', workoutMinutes: 15 },
+      { username: 'Jane Smith', workoutType: 'Swimming', workoutMinutes: 35 }
     ];
 
     if (isPlatformBrowser(this.platformId)) {
@@ -37,5 +43,17 @@ export class WorkoutService {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('workouts', JSON.stringify(this.workouts));
     }
+  }
+
+  getAggregatedWorkoutsByUsername(username: string): { [key: string]: number } {
+    const userWorkouts = this.workouts.filter(workout => workout.username === username);
+    return userWorkouts.reduce((acc, workout) => {
+      if (acc[workout.workoutType]) {
+        acc[workout.workoutType] += workout.workoutMinutes;
+      } else {
+        acc[workout.workoutType] = workout.workoutMinutes;
+      }
+      return acc;
+    }, {} as { [key: string]: number });
   }
 }

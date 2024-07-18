@@ -10,8 +10,8 @@ export class WorkoutSearchComponent implements OnInit {
   @Output() searchResults = new EventEmitter<any[]>();
   
   searchTerm: string = '';
-  filterType: string = '';
-  workoutTypes: string[] = ['Running', 'Cycling', 'Swimming'];
+  filterType: string = 'All Types'; // Initialize filterType to 'All Types'
+  workoutTypes: string[] = ['All Types', 'Running', 'Cycling', 'Swimming']; // Added 'All Types' option
   workouts: any[] = [];
   filteredWorkouts: any[] = [];
 
@@ -36,9 +36,11 @@ export class WorkoutSearchComponent implements OnInit {
   }
 
   private applyFilter(): void {
-    if (this.filterType) {
-      this.filteredWorkouts = this.filteredWorkouts.filter(workout => 
+    if (this.filterType !== 'All Types') {
+      this.filteredWorkouts = this.workouts.filter(workout => 
         workout.workoutType === this.filterType);
+    } else {
+      this.filteredWorkouts = this.workouts; // Show all workouts when 'All Types' is selected
     }
   }
 

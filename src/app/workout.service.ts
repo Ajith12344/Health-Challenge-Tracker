@@ -20,10 +20,7 @@ export class WorkoutService {
       { username: 'Alex Johnson', workoutType: 'Swimming', workoutMinutes: 60 },
       { username: 'Ajith18', workoutType: 'Running', workoutMinutes: 20 },
       { username: 'Ajith12344', workoutType: 'Cycling', workoutMinutes: 25 },
-      { username: 'Ram', workoutType: 'Swimming', workoutMinutes: 40 },
-      { username: 'Ajith18', workoutType: 'Running', workoutMinutes: 30 },
-      { username: 'John Doe', workoutType: 'Cycling', workoutMinutes: 15 },
-      { username: 'Jane Smith', workoutType: 'Swimming', workoutMinutes: 35 }
+      { username: 'Ram', workoutType: 'Swimming', workoutMinutes: 40 }
     ];
 
     if (isPlatformBrowser(this.platformId)) {

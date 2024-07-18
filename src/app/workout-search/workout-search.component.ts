@@ -10,8 +10,8 @@ export class WorkoutSearchComponent implements OnInit {
   @Output() searchResults = new EventEmitter<any[]>();
   
   searchTerm: string = '';
-  filterType: string = 'All Types'; // Initialize filterType to 'All Types'
-  workoutTypes: string[] = ['All Types', 'Running', 'Cycling', 'Swimming']; // Added 'All Types' option
+  filterType: string = 'All Types'; // Set initial value to 'All Types'
+  workoutTypes: string[] = ['All Types', 'Running', 'Cycling', 'Swimming']; // Include 'All Types' as the first option
   workouts: any[] = [];
   filteredWorkouts: any[] = [];
 
@@ -20,31 +20,26 @@ export class WorkoutSearchComponent implements OnInit {
   ngOnInit(): void {
     this.workouts = this.workoutService.getWorkouts();
     this.filteredWorkouts = this.workouts;
-    this.emitSearchResults();
+    this.applyFilterAndSearch();
   }
 
   onSearch(): void {
-    this.filteredWorkouts = this.workouts.filter(workout => 
-      workout.username.toLowerCase().includes(this.searchTerm.toLowerCase()));
-    this.applyFilter();
-    this.emitSearchResults();
+    this.applyFilterAndSearch();
   }
 
   onFilter(): void {
-    this.applyFilter();
-    this.emitSearchResults();
+    this.applyFilterAndSearch();
   }
 
-  private applyFilter(): void {
-    if (this.filterType !== 'All Types') {
-      this.filteredWorkouts = this.workouts.filter(workout => 
-        workout.workoutType === this.filterType);
-    } else {
-      this.filteredWorkouts = this.workouts; // Show all workouts when 'All Types' is selected
-    }
-  }
+  private applyFilterAndSearch(): void {
+    // Filter by workout type
+    this.filteredWorkouts = this.workouts.filter(workout => {
+      const typeMatch = this.filterType === 'All Types' || workout.workoutType === this.filterType;
+      const usernameMatch = workout.username.toLowerCase().includes(this.searchTerm.toLowerCase());
+      return typeMatch && usernameMatch;
+    });
 
-  private emitSearchResults(): void {
+    // Emit filtered results
     this.searchResults.emit(this.filteredWorkouts);
   }
 }

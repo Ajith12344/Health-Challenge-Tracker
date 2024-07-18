@@ -12,7 +12,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { WorkoutService } from './workout.service'; // Ensure the service is correctly imported
-
 @NgModule({
   declarations: [
     AppComponent,

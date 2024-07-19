@@ -26,6 +26,9 @@ export class WorkoutFormComponent implements OnInit {
     });
   }
 
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
+  }
   onSubmit(): void {
     if (this.workoutForm.valid) {
       // Store the form value in local storage

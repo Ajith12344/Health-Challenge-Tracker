@@ -17,10 +17,7 @@ export class WorkoutService {
     const initialData: Workout[] = [
       { username: 'John Doe', workoutType: 'Running', workoutMinutes: 30 },
       { username: 'Jane Smith', workoutType: 'Cycling', workoutMinutes: 45 },
-      { username: 'Alex Johnson', workoutType: 'Swimming', workoutMinutes: 60 },
-      { username: 'Ajith18', workoutType: 'Running', workoutMinutes: 20 },
-      { username: 'Ajith12344', workoutType: 'Cycling', workoutMinutes: 25 },
-      { username: 'Ram', workoutType: 'Swimming', workoutMinutes: 40 }
+      { username: 'Alex Johnson', workoutType: 'Swimming', workoutMinutes: 60 }
     ];
 
     if (isPlatformBrowser(this.platformId)) {

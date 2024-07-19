@@ -5,19 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WorkoutFormComponent } from './workout-form/workout-form.component';
 import { WorkoutListComponent } from './workout-list/workout-list.component';
-import { WorkoutSearchComponent } from './workout-search/workout-search.component';
+
 import { WorkoutChartComponent } from './workout-chart/workout-chart.component';
 import { TableModule } from 'primeng/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HomeComponent } from './home/home.component';
 import { WorkoutService } from './workout.service'; // Ensure the service is correctly imported
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     WorkoutFormComponent,
     WorkoutListComponent,
-    WorkoutSearchComponent,
     WorkoutChartComponent
    
   ],

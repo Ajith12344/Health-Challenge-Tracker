@@ -18,7 +18,6 @@ export class WorkoutService {
       { username: 'John Doe', workoutType: 'Running', workoutMinutes: 30 },
       { username: 'Jane Smith', workoutType: 'Cycling', workoutMinutes: 45 },
       { username: 'Alex Johnson', workoutType: 'Swimming', workoutMinutes: 60 }
-      
     ];
 
     if (isPlatformBrowser(this.platformId)) {
@@ -35,7 +34,11 @@ export class WorkoutService {
 
   addWorkout(workout: Workout): void {
     // Validate the workout data before adding
-    if (workout && workout.username && workout.workoutType && workout.workoutMinutes >= 0) {
+    if (workout && 
+        typeof workout.username === 'string' && 
+        typeof workout.workoutType === 'string' &&
+        typeof workout.workoutMinutes === 'number' && 
+        workout.workoutMinutes >= 0) {
       this.workouts.push(workout);
       if (isPlatformBrowser(this.platformId)) {
         localStorage.setItem('workouts', JSON.stringify(this.workouts));
@@ -44,6 +47,9 @@ export class WorkoutService {
   }
 
   getAggregatedWorkoutsByUsername(username: string): { [key: string]: number } {
+    if (typeof username !== 'string') {
+      return {};
+    }
     const userWorkouts = this.workouts.filter(workout => workout.username === username);
     return userWorkouts.reduce((acc, workout) => {
       if (acc[workout.workoutType]) {
